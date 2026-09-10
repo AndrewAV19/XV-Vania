@@ -442,8 +442,7 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
 
             <Box sx={{ position: "relative", zIndex: 2, mt: 2 }}>
               <AttendanceForm
-                novio=""
-                novia={quinceanera}
+                quinceanera={quinceanera}
                 onClose={() => setOpenModal(false)}
               />
             </Box>
