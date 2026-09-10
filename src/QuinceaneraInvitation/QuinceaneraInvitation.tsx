@@ -30,6 +30,7 @@ import { PhotoStrip } from "../components/Designs/PhotoStrip";
 import { EnvelopeIllustration } from "../components/Designs/EnvelopeIllustration";
 import { CoupleIllustration } from "../components/Designs/CoupleIllustration";
 import { CupsIllustration } from "../components/Designs/CupsIllustration";
+import ParentsAndGodparents from "../components/Designs/ParentsAndGodparents";
 
 interface TimelineEvent {
   time: string;
@@ -185,7 +186,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
   apellidos = "Jiménez Alonso",
   lugar = "Salón de Eventos",
   direccion = "Av. Principal #123",
-  mensaje = "Hoy dejo atrás mi niñez para comenzar un nuevo capítulo, rodeada del amor de quienes más quiero.",
   historia = "Hace quince años llegaste al mundo para llenarlo de luz, alegría y amor. Hoy queremos celebrar contigo esta etapa tan especial.",
   codigoVestimenta = "Gala / Formal",
   frasePersonal = "Un sueño que comienza, una historia que continúa.",
@@ -430,44 +430,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
               <Box sx={{ width: "100%" }}>
                 <PhotoStrip fotos={fotos} />
               </Box>
-
-              <Box
-                sx={{
-                  position: "relative",
-                  background: "rgba(255,248,247,0.88)",
-                  borderRadius: "15px",
-                  px: { xs: 2.5, sm: 3 },
-                  py: 3,
-                  boxShadow: "0 12px 30px rgba(102,52,64,0.1)",
-                  maxWidth: 460,
-                  mx: "auto",
-                  width: "100%",
-                }}
-              >
-                <Typography
-                  sx={{
-                    ...serifFont,
-                    color: T.roseDark,
-                    fontSize: 15,
-                    lineHeight: 1.85,
-                    textAlign: "center",
-                    fontStyle: "italic",
-                  }}
-                >
-                  "{mensaje}"
-                </Typography>
-
-                <Typography
-                  sx={{
-                    ...scriptFont,
-                    color: T.rose,
-                    fontSize: 30,
-                    textAlign: "center",
-                  }}
-                >
-                  Con amor
-                </Typography>
-              </Box>
             </Box>
 
             <Box
@@ -476,62 +438,7 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                 mt: 5,
               }}
             >
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.gold,
-                  fontSize: 11,
-                  letterSpacing: "0.2em",
-                  textAlign: "center",
-                  textTransform: "uppercase",
-                  mb: 2,
-                }}
-              >
-                Con la bendición de nuestros padres y padrinos
-              </Typography>
-
-              <Stack spacing={0.4} alignItems="center" sx={{ mb: 2 }}>
-                {padrinos.map((item) => (
-                  <Typography
-                    key={item}
-                    sx={{
-                      ...serifFont,
-                      color: T.textDark,
-                      fontSize: 16,
-                      textAlign: "center",
-                    }}
-                  >
-                    {item}
-                  </Typography>
-                ))}
-              </Stack>
-
-              <Typography
-                sx={{
-                  color: T.rose,
-                  textAlign: "center",
-                  fontSize: 17,
-                  my: 1,
-                }}
-              >
-                ♡
-              </Typography>
-
-              <Stack spacing={0.4} alignItems="center">
-                {madrinas.map((item) => (
-                  <Typography
-                    key={item}
-                    sx={{
-                      ...serifFont,
-                      color: T.textDark,
-                      fontSize: 16,
-                      textAlign: "center",
-                    }}
-                  >
-                    {item}
-                  </Typography>
-                ))}
-              </Stack>
+              <ParentsAndGodparents padrinos={padrinos} madrinas={madrinas} />
             </Box>
 
             <Box
