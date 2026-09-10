@@ -25,7 +25,6 @@ import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import AttendanceForm from "../components/AttendanceForm/AttendanceForm";
 import GiftsSection from "../components/Giftssection/Giftseciont";
 import LocationSection from "../components/Locationsection/Locationsection";
-import { FloralDecoration } from "../components/Designs/Flowers";
 import { TiaraDecoration } from "../components/Designs/TiaraDecoration";
 import { Countdown } from "../components/Designs/Countdown";
 import { OrnamentalLine } from "../components/Designs/OrnamentalLine";
@@ -282,20 +281,7 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
             borderRadius: { xs: "0px", sm: "4px" },
           }}
         >
-          <FloralDecoration position="topLeft" rotate={0} />
-          <FloralDecoration position="topRight" rotate={90} />
-          <FloralDecoration
-            position="bottomLeft"
-            rotate={-90}
-            scale={0.95}
-            opacity={0.9}
-          />
-          <FloralDecoration
-            position="bottomRight"
-            rotate={180}
-            scale={0.95}
-            opacity={0.9}
-          />
+         
 
           <Box
             sx={{
@@ -1027,30 +1013,40 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
         </Zoom>
       )}
 
-      <Container
-        maxWidth="sm"
-        sx={{
-          py: { xs: 0, sm: 4 },
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        {activeSection === "invitation" && renderInvitation()}
+     <Box
+  sx={{
+    width: "100%",
+    minHeight: "100vh",
+    position: "relative",
+    zIndex: 1,
+    display: "flex",
+    flexDirection: "column",
+  }}
+>
+  {activeSection === "invitation" && renderInvitation()}
 
-        {activeSection === "history" && (
-          <HistorySection novio="" novia={quinceanera} historia={historia} />
-        )}
+  {activeSection === "history" && (
+    <Container maxWidth="md" sx={{ py: 4 }}>
+      <HistorySection novio="" novia={quinceanera} historia={historia} />
+    </Container>
+  )}
 
-        {activeSection === "details" && <GiftsSection />}
+  {activeSection === "details" && (
+    <Container maxWidth="md" sx={{ py: 4 }}>
+      <GiftsSection />
+    </Container>
+  )}
 
-        {activeSection === "location" && (
-          <LocationSection
-            lugar={lugar}
-            direccion={direccion}
-            coordenadasGPS={coordenadasGPS}
-          />
-        )}
-      </Container>
+  {activeSection === "location" && (
+    <Container maxWidth="md" sx={{ py: 4 }}>
+      <LocationSection
+        lugar={lugar}
+        direccion={direccion}
+        coordenadasGPS={coordenadasGPS}
+      />
+    </Container>
+  )}
+</Box>
 
       <Modal
         open={openModal}
@@ -1087,12 +1083,7 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
               p: { xs: 3, sm: 4 },
             }}
           >
-            <FloralDecoration
-              position="topRight"
-              rotate={90}
-              scale={0.7}
-              opacity={0.45}
-            />
+            
 
             <IconButton
               onClick={() => setOpenModal(false)}
