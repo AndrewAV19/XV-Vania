@@ -8,6 +8,7 @@ import { PhotoStripOnlyPhoto } from "../Designs/PhotoStripOnlyPhoto";
 import EventDetails from "../Designs/EventDetails";
 import { EnvelopeIllustration } from "../Designs/EnvelopeIllustration";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import QuinceReveal from "../Designs/QuinceReveal";
 
 interface InvitationContentProps {
   quinceanera: string;
@@ -89,72 +90,7 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
             py: { xs: 5, sm: 7 },
           }}
         >
-          <Box
-            className="invitation-reveal"
-            sx={{
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              sx={{
-                position: "relative",
-                width: { xs: 220, sm: 260 },
-                aspectRatio: "1 / 1",
-                borderRadius: "50%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "linear-gradient(135deg, #ffffff 0%, #fdf8f4 100%)",
-                boxShadow:
-                  "0 10px 30px rgba(185, 154, 97, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.9)",
-                mb: 3,
-              }}
-            >
-              <Typography
-                sx={{
-                  ...scriptFont,
-                  color: T.goldLight,
-                  fontSize: { xs: 36, sm: 44 },
-                  lineHeight: 1,
-                  mb: -3,
-                  zIndex: 1,
-                }}
-              >
-                Mis
-              </Typography>
-
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.goldLight,
-                  fontSize: { xs: 90, sm: 110 },
-                  lineHeight: 0.9,
-                  fontWeight: 400,
-                  letterSpacing: "-0.02em",
-                  zIndex: 1,
-                }}
-              >
-                15
-              </Typography>
-
-              <Typography
-                sx={{
-                  ...scriptFont,
-                  color: T.goldLight,
-                  fontSize: { xs: 36, sm: 44 },
-                  lineHeight: 1,
-                  mt: 3,
-                  zIndex: 1,
-                }}
-              >
-                Años
-              </Typography>
-            </Box>
-          </Box>
+          <QuinceReveal />
 
           <Box
             className="invitation-reveal invitation-delay-3"

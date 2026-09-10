@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Stack, Typography, Divider } from "@mui/material";
+import { FloralDecoration } from "./Flowers";
 
 interface ParentsAndGodparentsProps {
   parents?: string[];
@@ -39,6 +40,48 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
         <br />
         este día posible
       </Typography>
+
+      <Box
+        sx={{
+          position: "absolute",
+          left: { xs: "-3%", sm: "8%", md: "15%" },
+          top: "52%",
+          transform: "translateY(-50%)",
+          zIndex: 0,
+        }}
+      >
+        <FloralDecoration
+          size={80}
+          rotate={180}
+          scale={1}
+          opacity={0.9}
+          sx={{
+            width: { xs: 55, sm: 80, md: 110 },
+            height: "auto",
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          position: "absolute",
+          right: { xs: "-3%", sm: "8%", md: "15%" },
+          top: "52%",
+          transform: "translateY(-50%) scaleX(-1)",
+          zIndex: 0,
+        }}
+      >
+        <FloralDecoration
+          size={80}
+          rotate={180}
+          scale={1}
+          opacity={0.9}
+          sx={{
+            width: { xs: 55, sm: 80, md: 110 },
+            height: "auto",
+          }}
+        />
+      </Box>
 
       <Stack spacing={0.5} alignItems="center" sx={{ mb: 4 }}>
         {parents.map((item, index) => (
