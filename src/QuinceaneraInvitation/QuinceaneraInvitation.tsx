@@ -26,7 +26,6 @@ import AttendanceForm from "../components/AttendanceForm/AttendanceForm";
 import GiftsSection from "../components/Giftssection/Giftseciont";
 import LocationSection from "../components/Locationsection/Locationsection";
 import { Countdown } from "../components/Designs/Countdown";
-import { OrnamentalLine } from "../components/Designs/OrnamentalLine";
 import { PhotoStrip } from "../components/Designs/PhotoStrip";
 import { EnvelopeIllustration } from "../components/Designs/EnvelopeIllustration";
 import { CoupleIllustration } from "../components/Designs/CoupleIllustration";
@@ -194,11 +193,9 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
     lat: 20.301798,
     lng: -102.539874,
   },
-
   notasAdicionales = "Será un honor contar contigo en este día tan especial.",
   padrinos = ["Tania Alonso Ramírez", "Israel Jiménez Paulino"],
   madrinas = ["Laura Alonso Diaz", "Ventzislav Tzvetkov"],
-
   fotos = [],
   fechaEvento = "2027-03-27T17:00:00",
 }) => {
@@ -245,8 +242,8 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
       <Box
         sx={{
           position: "relative",
-          maxWidth: 620,
-          mx: "auto",
+          width: "100%",
+          maxWidth: "100%",
         }}
       >
         <Box
@@ -262,36 +259,14 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                 rgba(251,235,238,0.98) 100%
               )
             `,
-            border: "1px solid rgba(153,91,105,0.25)",
             boxShadow: `0 30px 70px ${T.shadow}`,
-            borderRadius: { xs: "0px", sm: "4px" },
           }}
         >
           <Box
             sx={{
-              position: "absolute",
-              inset: 13,
-              border: "1px solid rgba(166,105,119,0.38)",
-              pointerEvents: "none",
-              zIndex: 3,
-            }}
-          />
-
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 20,
-              border: "1px solid rgba(166,105,119,0.17)",
-              pointerEvents: "none",
-              zIndex: 3,
-            }}
-          />
-
-          <Box
-            sx={{
               position: "relative",
               zIndex: 4,
-              px: { xs: 4, sm: 6 },
+              px: 0,
               py: { xs: 5, sm: 7 },
             }}
           >
@@ -310,7 +285,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   width: { xs: 220, sm: 260 },
                   aspectRatio: "1 / 1",
                   borderRadius: "50%",
-                  border: "1.5px solid #c5a86a",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -320,14 +294,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   boxShadow:
                     "0 10px 30px rgba(185, 154, 97, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.9)",
                   mb: 3,
-                  "&::before": {
-                    content: '""',
-                    position: "absolute",
-                    inset: "6px",
-                    borderRadius: "50%",
-                    border: "1px solid rgba(197, 168, 106, 0.6)",
-                    pointerEvents: "none",
-                  },
                 }}
               >
                 <Typography
@@ -444,6 +410,7 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                 fontStyle: "italic",
                 maxWidth: 460,
                 mx: "auto",
+                mt: 3,
               }}
             >
               "{frasePersonal}"
@@ -452,41 +419,31 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
             <Box
               className="invitation-reveal invitation-delay-2"
               sx={{
-                display: "grid",
-                gridTemplateColumns: { xs: "1fr", sm: "0.8fr 1fr" },
+                display: "flex",
+                flexDirection: "column",
                 gap: { xs: 4, sm: 5 },
                 alignItems: "center",
                 my: 5,
+                width: "100%",
               }}
             >
-              <PhotoStrip fotos={fotos} />
+              <Box sx={{ width: "100%" }}>
+                <PhotoStrip fotos={fotos} />
+              </Box>
 
               <Box
                 sx={{
                   position: "relative",
                   background: "rgba(255,248,247,0.88)",
-                  border: "1px solid rgba(167,101,116,0.38)",
                   borderRadius: "15px",
                   px: { xs: 2.5, sm: 3 },
                   py: 3,
                   boxShadow: "0 12px 30px rgba(102,52,64,0.1)",
+                  maxWidth: 460,
+                  mx: "auto",
+                  width: "100%",
                 }}
               >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: -12,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: 45,
-                    height: 24,
-                    borderLeft: "1px solid rgba(167,101,116,0.35)",
-                    borderRight: "1px solid rgba(167,101,116,0.35)",
-                    borderBottom: "1px solid rgba(167,101,116,0.35)",
-                    borderRadius: "0 0 50% 50%",
-                  }}
-                />
-
                 <Typography
                   sx={{
                     ...serifFont,
@@ -500,8 +457,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   "{mensaje}"
                 </Typography>
 
-                <OrnamentalLine />
-
                 <Typography
                   sx={{
                     ...scriptFont,
@@ -513,15 +468,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   Con amor
                 </Typography>
               </Box>
-            </Box>
-
-            <Box
-              className="invitation-reveal invitation-delay-3"
-              sx={{
-                mt: 5,
-              }}
-            >
-              <OrnamentalLine />
             </Box>
 
             <Box
@@ -611,7 +557,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   sx={{
                     position: "relative",
                     background: "#fff9f7",
-                    border: "1px solid rgba(185,154,97,0.45)",
                     borderRadius: "18px",
                     p: 0.6,
                     boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
@@ -619,7 +564,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                 >
                   <Box
                     sx={{
-                      border: "1px solid rgba(185,154,97,0.35)",
                       borderRadius: "14px",
                       px: 3,
                       py: 3.5,
@@ -627,22 +571,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                       position: "relative",
                     }}
                   >
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: -12,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: 44,
-                        height: 22,
-                        borderLeft: "1.5px solid rgba(185,154,97,0.5)",
-                        borderRight: "1.5px solid rgba(185,154,97,0.5)",
-                        borderBottom: "1.5px solid rgba(185,154,97,0.5)",
-                        borderRadius: "0 0 50% 50%",
-                        background: "#fff9f7",
-                      }}
-                    />
-
                     <Typography
                       sx={{
                         ...scriptFont,
@@ -712,7 +640,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   sx={{
                     position: "relative",
                     background: "#fff9f7",
-                    border: "1px solid rgba(185,154,97,0.45)",
                     borderRadius: "18px",
                     p: 0.6,
                     boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
@@ -720,7 +647,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                 >
                   <Box
                     sx={{
-                      border: "1px solid rgba(185,154,97,0.35)",
                       borderRadius: "14px",
                       px: 3,
                       py: 3.5,
@@ -728,22 +654,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                       position: "relative",
                     }}
                   >
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: -12,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: 44,
-                        height: 22,
-                        borderLeft: "1.5px solid rgba(185,154,97,0.5)",
-                        borderRight: "1.5px solid rgba(185,154,97,0.5)",
-                        borderBottom: "1.5px solid rgba(185,154,97,0.5)",
-                        borderRadius: "0 0 50% 50%",
-                        background: "#fff9f7",
-                      }}
-                    />
-
                     <CoupleIllustration />
 
                     <Typography
@@ -779,7 +689,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   sx={{
                     position: "relative",
                     background: "#fff9f7",
-                    border: "1px solid rgba(185,154,97,0.45)",
                     borderRadius: "18px",
                     p: 0.6,
                     boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
@@ -787,7 +696,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                 >
                   <Box
                     sx={{
-                      border: "1px solid rgba(185,154,97,0.35)",
                       borderRadius: "14px",
                       px: 3,
                       py: 3.5,
@@ -795,22 +703,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                       position: "relative",
                     }}
                   >
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: -12,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: 44,
-                        height: 22,
-                        borderLeft: "1.5px solid rgba(185,154,97,0.5)",
-                        borderRight: "1.5px solid rgba(185,154,97,0.5)",
-                        borderBottom: "1.5px solid rgba(185,154,97,0.5)",
-                        borderRadius: "0 0 50% 50%",
-                        background: "#fff9f7",
-                      }}
-                    />
-
                     <Typography
                       sx={{
                         ...scriptFont,
@@ -1053,7 +945,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
               overflow: "auto",
               outline: "none",
               background: "linear-gradient(160deg, #fffaf8 0%, #fbecef 100%)",
-              border: "1px solid rgba(164,100,116,0.32)",
               borderRadius: "22px",
               boxShadow: "0 35px 75px rgba(70,30,42,0.3)",
               p: { xs: 3, sm: 4 },
@@ -1090,7 +981,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   height: 62,
                   mx: "auto",
                   borderRadius: "50%",
-                  border: "1px solid rgba(185,154,97,0.5)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -1137,7 +1027,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
                   fontSize: 14,
                   color: T.roseDark,
                   background: "#f8dfe5",
-                  border: "1px solid rgba(185,154,97,0.35)",
                 }}
               />
             </Box>

@@ -15,10 +15,9 @@ export const PhotoStrip = ({ fotos }: { fotos?: string[] }) => {
         position: "relative",
         width: "100%",
         maxWidth: "100%",
-        mx: "auto",
+        mx: 0,
         backgroundColor: "#fff",
         overflow: "hidden",
-        border: "2px solid #fce4ec",
         boxShadow: "0 10px 30px rgba(105,55,67,0.1)",
       }}
     >

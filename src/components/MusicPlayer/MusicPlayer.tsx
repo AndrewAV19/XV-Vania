@@ -10,8 +10,8 @@ interface MusicPlayerProps {
   text?: string;
 }
 
-const MusicPlayer: React.FC<MusicPlayerProps> = ({ 
-  text = "ESCUCHA MI CANCIÓN FAVORITA" 
+const MusicPlayer: React.FC<MusicPlayerProps> = ({
+  text = "ESCUCHA MI CANCIÓN FAVORITA",
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isAudioReady, setIsAudioReady] = useState(false);
@@ -78,11 +78,14 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
       sx={{
         position: "relative",
         width: "100%",
+        maxWidth: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         mt: 2,
         mb: 2,
+        mx: 0,
+        px: 0,
       }}
     >
       <Typography
@@ -102,10 +105,10 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
       <Box
         sx={{
           width: "100%",
-          maxWidth: 360,
+          maxWidth: "100%",
           backgroundColor: "rgba(235, 190, 200, 0.65)",
           backdropFilter: "blur(8px)",
-          borderRadius: "4px",
+          borderRadius: 0,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
