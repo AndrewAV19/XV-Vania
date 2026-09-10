@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   Typography,
-  Button,
   IconButton,
   Fade,
   Grow,
@@ -11,26 +10,16 @@ import {
   Modal,
   Backdrop,
   Chip,
-  Stack,
 } from "@mui/material";
 import {
   ChevronLeft as LeftIcon,
   Close as CloseIcon,
   ConfirmationNumber as ConfirmationNumberIcon,
-  MusicNote as MusicNoteIcon,
 } from "@mui/icons-material";
-
-import HistorySection from "../components/HistorySection/HistorySection";
-import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import AttendanceForm from "../components/AttendanceForm/AttendanceForm";
 import GiftsSection from "../components/Giftssection/Giftseciont";
 import LocationSection from "../components/Locationsection/Locationsection";
-import { Countdown } from "../components/Designs/Countdown";
-import { PhotoStrip } from "../components/Designs/PhotoStrip";
-import { EnvelopeIllustration } from "../components/Designs/EnvelopeIllustration";
-import { CoupleIllustration } from "../components/Designs/CoupleIllustration";
-import { CupsIllustration } from "../components/Designs/CupsIllustration";
-import ParentsAndGodparents from "../components/Designs/ParentsAndGodparents";
+import InvitationContent from "../components/InvitationContent/InvitationContent";
 
 interface TimelineEvent {
   time: string;
@@ -59,7 +48,7 @@ interface QuinceaneraInvitationProps {
   notasAdicionales?: string;
   horarioEventos?: TimelineEvent[];
   padrinos?: string[];
-  madrinas?: string[];
+  padres?: string[];
   colores?: string[];
   horaMisa?: string;
   fechaEvento?: string;
@@ -186,16 +175,14 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
   apellidos = "Jiménez Alonso",
   lugar = "Salón de Eventos",
   direccion = "Av. Principal #123",
-  historia = "Hace quince años llegaste al mundo para llenarlo de luz, alegría y amor. Hoy queremos celebrar contigo esta etapa tan especial.",
-  codigoVestimenta = "Gala / Formal",
   frasePersonal = "Un sueño que comienza, una historia que continúa.",
   coordenadasGPS = {
     lat: 20.301798,
     lng: -102.539874,
   },
   notasAdicionales = "Será un honor contar contigo en este día tan especial.",
-  padrinos = ["Tania Alonso Ramírez", "Israel Jiménez Paulino"],
-  madrinas = ["Laura Alonso Diaz", "Ventzislav Tzvetkov"],
+  padres = ["Tania Alonso Ramírez", "Israel Jiménez Paulino"],
+  padrinos = ["Laura Alonso Diaz", "Ventzislav Tzvetkov"],
   fotos = [],
   fechaEvento = "2027-03-27T17:00:00",
 }) => {
@@ -239,497 +226,18 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
 
   const renderInvitation = () => (
     <Grow in timeout={900}>
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "100%",
-        }}
-      >
-        <Box
-          sx={{
-            position: "relative",
-            overflow: "hidden",
-            minHeight: "100vh",
-            background: `
-              linear-gradient(
-                180deg,
-                rgba(255,250,249,0.98) 0%,
-                rgba(255,247,246,0.97) 45%,
-                rgba(251,235,238,0.98) 100%
-              )
-            `,
-            boxShadow: `0 30px 70px ${T.shadow}`,
-          }}
-        >
-          <Box
-            sx={{
-              position: "relative",
-              zIndex: 4,
-              px: 0,
-              py: { xs: 5, sm: 7 },
-            }}
-          >
-            <Box
-              className="invitation-reveal"
-              sx={{
-                textAlign: "center",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                  width: { xs: 220, sm: 260 },
-                  aspectRatio: "1 / 1",
-                  borderRadius: "50%",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background:
-                    "linear-gradient(135deg, #ffffff 0%, #fdf8f4 100%)",
-                  boxShadow:
-                    "0 10px 30px rgba(185, 154, 97, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.9)",
-                  mb: 3,
-                }}
-              >
-                <Typography
-                  sx={{
-                    ...scriptFont,
-                    color: T.goldLight,
-                    fontSize: { xs: 36, sm: 44 },
-                    lineHeight: 1,
-                    mb: -3,
-                    zIndex: 1,
-                  }}
-                >
-                  Mis
-                </Typography>
-
-                <Typography
-                  sx={{
-                    ...serifFont,
-                    color: T.goldLight,
-                    fontSize: { xs: 90, sm: 110 },
-                    lineHeight: 0.9,
-                    fontWeight: 400,
-                    letterSpacing: "-0.02em",
-                    zIndex: 1,
-                  }}
-                >
-                  15
-                </Typography>
-
-                <Typography
-                  sx={{
-                    ...scriptFont,
-                    color: T.goldLight,
-                    fontSize: { xs: 36, sm: 44 },
-                    lineHeight: 1,
-                    mt: 3,
-                    zIndex: 1,
-                  }}
-                >
-                  Años
-                </Typography>
-              </Box>
-            </Box>
-
-            <Box
-              className="invitation-reveal invitation-delay-3"
-              sx={{
-                textAlign: "center",
-                my: 5,
-              }}
-            >
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.gold,
-                  fontSize: { xs: 20, sm: 24 },
-                  fontWeight: 600,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  mb: 1.5,
-                }}
-              >
-                Faltan
-              </Typography>
-
-              <Countdown targetDate={fechaEvento} />
-            </Box>
-
-            <MusicPlayer />
-
-            <Box
-              sx={{
-                mt: 4,
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  ...scriptFont,
-                  color: T.gold,
-                  fontSize: { xs: 76, sm: 96 },
-                  lineHeight: 0.9,
-                  textShadow: "0 2px 10px rgba(152,79,98,0.12)",
-                  textAlign: "center",
-                }}
-              >
-                {quinceanera}
-              </Typography>
-
-              <Typography
-                sx={{
-                  ...scriptFont,
-                  color: T.gold,
-                  fontSize: { xs: 58, sm: 72 },
-                  lineHeight: 0.9,
-                  textShadow: "0 2px 10px rgba(152,79,98,0.12)",
-                  textAlign: "center",
-                }}
-              >
-                {apellidos}
-              </Typography>
-            </Box>
-
-            <Typography
-              sx={{
-                ...serifFont,
-                color: T.text,
-                textAlign: "center",
-                fontSize: 15,
-                lineHeight: 1.9,
-                fontStyle: "italic",
-                maxWidth: 460,
-                mx: "auto",
-                mt: 3,
-              }}
-            >
-              "{frasePersonal}"
-            </Typography>
-
-            <Box
-              className="invitation-reveal invitation-delay-2"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: { xs: 4, sm: 5 },
-                alignItems: "center",
-                my: 5,
-                width: "100%",
-              }}
-            >
-              <Box sx={{ width: "100%" }}>
-                <PhotoStrip fotos={fotos} />
-              </Box>
-            </Box>
-
-            <Box
-              className="invitation-reveal invitation-delay-4"
-              sx={{
-                mt: 5,
-              }}
-            >
-              <ParentsAndGodparents padrinos={padrinos} madrinas={madrinas} />
-            </Box>
-
-            <Box
-              className="invitation-reveal invitation-delay-4"
-              sx={{
-                mt: 5,
-              }}
-            >
-              <Typography
-                sx={{
-                  ...scriptFont,
-                  color: T.roseDark,
-                  textAlign: "center",
-                  fontSize: { xs: 42, sm: 52 },
-                  mb: 3,
-                }}
-              >
-                Detalles
-              </Typography>
-
-              <Stack spacing={3}>
-                <Box
-                  sx={{
-                    position: "relative",
-                    background: "#fff9f7",
-                    borderRadius: "18px",
-                    p: 0.6,
-                    boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      borderRadius: "14px",
-                      px: 3,
-                      py: 3.5,
-                      textAlign: "center",
-                      position: "relative",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        ...scriptFont,
-                        color: T.roseDark,
-                        fontSize: 36,
-                        lineHeight: 1,
-                        mb: 1,
-                      }}
-                    >
-                      Recepción
-                    </Typography>
-
-                    <CupsIllustration />
-
-                    <Typography
-                      sx={{
-                        ...serifFont,
-                        color: T.gold,
-                        fontSize: 18,
-                        fontWeight: 600,
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      17:30 PM
-                    </Typography>
-
-                    <Typography
-                      sx={{
-                        ...serifFont,
-                        color: T.textDark,
-                        fontSize: 18,
-                        mt: 0.5,
-                      }}
-                    >
-                      {lugar}
-                    </Typography>
-
-                    <Button
-                      onClick={() => setActiveSection("location")}
-                      sx={{
-                        ...serifFont,
-                        mt: 2.5,
-                        color: "#fff",
-                        background:
-                          "linear-gradient(135deg, #c07a8b 0%, #a85e70 100%)",
-                        borderRadius: "30px",
-                        px: 3.5,
-                        py: 0.9,
-                        fontSize: 12,
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        boxShadow: "0 6px 16px rgba(133,65,82,0.25)",
-                        "&:hover": {
-                          background:
-                            "linear-gradient(135deg, #b66d7f 0%, #8d485b 100%)",
-                          transform: "translateY(-2px)",
-                        },
-                        transition: "all .3s ease",
-                      }}
-                    >
-                      Ver ubicación
-                    </Button>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    position: "relative",
-                    background: "#fff9f7",
-                    borderRadius: "18px",
-                    p: 0.6,
-                    boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      borderRadius: "14px",
-                      px: 3,
-                      py: 3.5,
-                      textAlign: "center",
-                      position: "relative",
-                    }}
-                  >
-                    <CoupleIllustration />
-
-                    <Typography
-                      sx={{
-                        ...serifFont,
-                        color: T.textDark,
-                        fontSize: 13,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                        fontWeight: 600,
-                      }}
-                    >
-                      Código de
-                      <br />
-                      Vestimenta
-                    </Typography>
-
-                    <Typography
-                      sx={{
-                        ...scriptFont,
-                        color: T.roseDark,
-                        fontSize: 34,
-                        lineHeight: 1,
-                        mt: 0.5,
-                      }}
-                    >
-                      {codigoVestimenta}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    position: "relative",
-                    background: "#fff9f7",
-                    borderRadius: "18px",
-                    p: 0.6,
-                    boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      borderRadius: "14px",
-                      px: 3,
-                      py: 3.5,
-                      textAlign: "center",
-                      position: "relative",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        ...scriptFont,
-                        color: T.roseDark,
-                        fontSize: 34,
-                        lineHeight: 1,
-                        mb: 0.5,
-                      }}
-                    >
-                      Confirmar asistencia
-                    </Typography>
-
-                    <EnvelopeIllustration />
-
-                    <Typography
-                      sx={{
-                        ...serifFont,
-                        color: T.text,
-                        fontSize: 14,
-                        lineHeight: 1.6,
-                        px: 1,
-                      }}
-                    >
-                      Esperamos contar contigo en este día tan especial para mí
-                    </Typography>
-
-                    <Button
-                      onClick={() => setOpenModal(true)}
-                      sx={{
-                        ...serifFont,
-                        mt: 2.5,
-                        color: "#fff",
-                        background:
-                          "linear-gradient(135deg, #c07a8b 0%, #a85e70 100%)",
-                        borderRadius: "30px",
-                        px: 3.5,
-                        py: 0.9,
-                        fontSize: 12,
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        boxShadow: "0 6px 16px rgba(133,65,82,0.25)",
-                        "&:hover": {
-                          background:
-                            "linear-gradient(135deg, #b66d7f 0%, #8d485b 100%)",
-                          transform: "translateY(-2px)",
-                        },
-                        transition: "all .3s ease",
-                      }}
-                    >
-                      Confirmar
-                    </Button>
-                  </Box>
-                </Box>
-              </Stack>
-
-              <Typography
-                sx={{
-                  ...scriptFont,
-                  color: T.roseDark,
-                  textAlign: "center",
-                  fontSize: { xs: 64, sm: 80 },
-                  lineHeight: 0.9,
-                  mt: 5,
-                  textShadow: "0 2px 10px rgba(152,79,98,0.12)",
-                }}
-              >
-                {quinceanera}
-              </Typography>
-            </Box>
-
-            <Typography
-              sx={{
-                ...serifFont,
-                color: T.text,
-                fontSize: 13,
-                textAlign: "center",
-                fontStyle: "italic",
-                lineHeight: 1.8,
-                mt: 3,
-                px: 2,
-              }}
-            >
-              {notasAdicionales}
-            </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 1.5,
-                mt: 4,
-                color: T.gold,
-              }}
-            >
-              <Box
-                sx={{
-                  width: 45,
-                  height: 1,
-                  background: "linear-gradient(90deg, transparent, #b99a61)",
-                }}
-              />
-
-              <MusicNoteIcon
-                sx={{
-                  fontSize: 17,
-                  animation: "softPulse 2.5s infinite",
-                }}
-              />
-
-              <Box
-                sx={{
-                  width: 45,
-                  height: 1,
-                  background: "linear-gradient(90deg, #b99a61, transparent)",
-                }}
-              />
-            </Box>
-          </Box>
-        </Box>
+      <Box>
+        <InvitationContent
+          quinceanera={quinceanera}
+          apellidos={apellidos}
+          frasePersonal={frasePersonal}
+          fotos={fotos}
+          padres={padres}
+          padrinos={padrinos}
+          notasAdicionales={notasAdicionales}
+          fechaEvento={fechaEvento}
+          onOpenModal={() => setOpenModal(true)}
+        />
       </Box>
     </Grow>
   );
@@ -799,12 +307,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
         }}
       >
         {activeSection === "invitation" && renderInvitation()}
-
-        {activeSection === "history" && (
-          <Container maxWidth="md" sx={{ py: 4 }}>
-            <HistorySection novio="" novia={quinceanera} historia={historia} />
-          </Container>
-        )}
 
         {activeSection === "details" && (
           <Container maxWidth="md" sx={{ py: 4 }}>
