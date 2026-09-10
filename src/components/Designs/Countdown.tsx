@@ -1,4 +1,4 @@
-import { Box, Divider, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export const Countdown = ({ targetDate }: { targetDate: string }) => {
@@ -14,13 +14,7 @@ export const Countdown = ({ targetDate }: { targetDate: string }) => {
       const difference = new Date(targetDate).getTime() - Date.now();
 
       if (difference <= 0) {
-        setTime({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        });
-
+        setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
@@ -33,11 +27,7 @@ export const Countdown = ({ targetDate }: { targetDate: string }) => {
     };
 
     calculate();
-
-    const interval = window.setInterval(() => {
-      calculate();
-    }, 1000);
-
+    const interval = window.setInterval(calculate, 1000);
     return () => window.clearInterval(interval);
   }, [targetDate]);
 
@@ -52,61 +42,63 @@ export const Countdown = ({ targetDate }: { targetDate: string }) => {
     <Box
       sx={{
         width: "100%",
-        maxWidth: 310,
+        maxWidth: 500,
         mx: "auto",
-        mt: 2,
-        border: "1px solid rgba(158,92,107,0.45)",
-        borderRadius: "4px",
-        px: { xs: 1.5, sm: 2 },
-        py: 1.5,
-        background: "rgba(255,250,248,0.55)",
+        mt: 1,
       }}
     >
       <Stack
         direction="row"
         justifyContent="center"
-        divider={
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{
-              borderColor: "rgba(158,92,107,0.2)",
-            }}
-          />
-        }
+        alignItems="flex-start"
+        spacing={0.5}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <Box
             key={item.label}
-            sx={{
-              flex: 1,
-              textAlign: "center",
-              px: 0.6,
-            }}
+            sx={{ display: "flex", alignItems: "flex-start" }}
           >
-            <Typography
-              sx={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: "#a86b79",
-                fontSize: { xs: 20, sm: 24 },
-                lineHeight: 1,
-                fontWeight: 500,
-              }}
-            >
-              {String(item.value).padStart(2, "0")}
-            </Typography>
+            <Box sx={{ textAlign: "center", minWidth: { xs: 55, sm: 70 } }}>
+              <Typography
+                sx={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  color: "#b08d6a",
+                  fontSize: { xs: 48, sm: 60 },
+                  lineHeight: 1,
+                  fontWeight: 600,
+                }}
+              >
+                {String(item.value).padStart(2, "0")}
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  color: "#8d5967",
+                  fontSize: { xs: 9, sm: 10 },
+                  fontWeight: 600,
+                  letterSpacing: "0.15em",
+                  mt: 0.5,
+                  textTransform: "uppercase",
+                }}
+              >
+                {item.label}
+              </Typography>
+            </Box>
 
-            <Typography
-              sx={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: "#8d5967",
-                fontSize: { xs: 7, sm: 8 },
-                letterSpacing: "0.1em",
-                mt: 0.5,
-              }}
-            >
-              {item.label}
-            </Typography>
+            {index < items.length - 1 && (
+              <Typography
+                sx={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  color: "#b08d6a",
+                  fontSize: { xs: 48, sm: 60 },
+                  fontWeight: 600,
+                  lineHeight: 1,
+                  mt: 0.2,
+                }}
+              >
+                :
+              </Typography>
+            )}
           </Box>
         ))}
       </Stack>

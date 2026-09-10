@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -25,7 +25,6 @@ import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import AttendanceForm from "../components/AttendanceForm/AttendanceForm";
 import GiftsSection from "../components/Giftssection/Giftseciont";
 import LocationSection from "../components/Locationsection/Locationsection";
-import { TiaraDecoration } from "../components/Designs/TiaraDecoration";
 import { Countdown } from "../components/Designs/Countdown";
 import { OrnamentalLine } from "../components/Designs/OrnamentalLine";
 import { PhotoStrip } from "../components/Designs/PhotoStrip";
@@ -42,6 +41,7 @@ interface TimelineEvent {
 
 interface QuinceaneraInvitationProps {
   quinceanera?: string;
+  apellidos?: string;
   fecha?: string;
   hora?: string;
   lugar?: string;
@@ -183,7 +183,7 @@ body {
 
 export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
   quinceanera = "Vania",
-  fecha = "27 de Marzo de 2027",
+  apellidos = "Jiménez Alonso",
   lugar = "Salón de Eventos",
   direccion = "Av. Principal #123",
   mensaje = "Hoy dejo atrás mi niñez para comenzar un nuevo capítulo, rodeada del amor de quienes más quiero.",
@@ -240,20 +240,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
     fontFamily: "'Cormorant Garamond', serif",
   };
 
-  const formattedDate = useMemo(() => {
-    const date = new Date(fechaEvento);
-
-    if (Number.isNaN(date.getTime())) {
-      return fecha;
-    }
-
-    return new Intl.DateTimeFormat("es-MX", {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    }).format(date);
-  }, [fechaEvento, fecha]);
-
   const renderInvitation = () => (
     <Grow in timeout={900}>
       <Box
@@ -281,8 +267,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
             borderRadius: { xs: "0px", sm: "4px" },
           }}
         >
-         
-
           <Box
             sx={{
               position: "absolute",
@@ -315,39 +299,122 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
               className="invitation-reveal"
               sx={{
                 textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "relative",
+                  width: { xs: 220, sm: 260 },
+                  aspectRatio: "1 / 1",
+                  borderRadius: "50%",
+                  border: "1.5px solid #c5a86a",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background:
+                    "linear-gradient(135deg, #ffffff 0%, #fdf8f4 100%)",
+                  boxShadow:
+                    "0 10px 30px rgba(185, 154, 97, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.9)",
+                  mb: 3,
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    inset: "6px",
+                    borderRadius: "50%",
+                    border: "1px solid rgba(197, 168, 106, 0.6)",
+                    pointerEvents: "none",
+                  },
+                }}
+              >
+                <Typography
+                  sx={{
+                    ...scriptFont,
+                    color: T.goldLight,
+                    fontSize: { xs: 36, sm: 44 },
+                    lineHeight: 1,
+                    mb: -3,
+                    zIndex: 1,
+                  }}
+                >
+                  Mis
+                </Typography>
+
+                <Typography
+                  sx={{
+                    ...serifFont,
+                    color: T.goldLight,
+                    fontSize: { xs: 90, sm: 110 },
+                    lineHeight: 0.9,
+                    fontWeight: 400,
+                    letterSpacing: "-0.02em",
+                    zIndex: 1,
+                  }}
+                >
+                  15
+                </Typography>
+
+                <Typography
+                  sx={{
+                    ...scriptFont,
+                    color: T.goldLight,
+                    fontSize: { xs: 36, sm: 44 },
+                    lineHeight: 1,
+                    mt: 3,
+                    zIndex: 1,
+                  }}
+                >
+                  Años
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              className="invitation-reveal invitation-delay-3"
+              sx={{
+                textAlign: "center",
+                my: 5,
               }}
             >
               <Typography
                 sx={{
                   ...serifFont,
                   color: T.gold,
-                  fontSize: { xs: 12, sm: 14 },
-                  letterSpacing: "0.22em",
-                  textTransform: "uppercase",
+                  fontSize: { xs: 20, sm: 24 },
                   fontWeight: 600,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  mb: 1.5,
                 }}
               >
-                MIS XV AÑOS
+                Faltan
               </Typography>
 
-              <Box
-                sx={{
-                  width: 70,
-                  height: 1,
-                  mx: "auto",
-                  my: 1.4,
-                  background:
-                    "linear-gradient(90deg, transparent, #b99a61, transparent)",
-                }}
-              />
+              <Countdown targetDate={fechaEvento} />
+            </Box>
 
+            <MusicPlayer />
+
+            <Box
+              sx={{
+                mt: 4,
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
               <Typography
                 sx={{
                   ...scriptFont,
-                  color: T.roseDark,
+                  color: T.gold,
                   fontSize: { xs: 76, sm: 96 },
                   lineHeight: 0.9,
                   textShadow: "0 2px 10px rgba(152,79,98,0.12)",
+                  textAlign: "center",
                 }}
               >
                 {quinceanera}
@@ -355,73 +422,32 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
 
               <Typography
                 sx={{
-                  ...serifFont,
+                  ...scriptFont,
                   color: T.gold,
-                  fontSize: { xs: 16, sm: 18 },
-                  letterSpacing: "0.25em",
-                  mt: 1.5,
+                  fontSize: { xs: 58, sm: 72 },
+                  lineHeight: 0.9,
+                  textShadow: "0 2px 10px rgba(152,79,98,0.12)",
+                  textAlign: "center",
                 }}
               >
-                ESTÁS INVITADO
-              </Typography>
-
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.text,
-                  fontSize: 15,
-                  mt: 0.5,
-                  fontStyle: "italic",
-                }}
-              >
-                a celebrar conmigo
+                {apellidos}
               </Typography>
             </Box>
 
-            <OrnamentalLine />
-
-            <Box
-              className="invitation-reveal invitation-delay-1"
+            <Typography
               sx={{
+                ...serifFont,
+                color: T.text,
                 textAlign: "center",
-                mb: 2,
+                fontSize: 15,
+                lineHeight: 1.9,
+                fontStyle: "italic",
+                maxWidth: 460,
+                mx: "auto",
               }}
             >
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.gold,
-                  fontSize: 11,
-                  letterSpacing: "0.28em",
-                  textTransform: "uppercase",
-                }}
-              >
-                SÁBADO
-              </Typography>
-
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.roseDark,
-                  fontSize: { xs: 25, sm: 29 },
-                  letterSpacing: "0.08em",
-                  fontWeight: 500,
-                }}
-              >
-                {formattedDate}
-              </Typography>
-            </Box>
-
-            <Box
-              className="invitation-reveal invitation-delay-2"
-              sx={{
-                position: "relative",
-                textAlign: "center",
-                my: 3,
-              }}
-            >
-              <TiaraDecoration />
-            </Box>
+              "{frasePersonal}"
+            </Typography>
 
             <Box
               className="invitation-reveal invitation-delay-2"
@@ -492,58 +518,10 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
             <Box
               className="invitation-reveal invitation-delay-3"
               sx={{
-                textAlign: "center",
-                my: 5,
-              }}
-            >
-              <Typography
-                sx={{
-                  ...scriptFont,
-                  color: T.roseDark,
-                  fontSize: { xs: 58, sm: 72 },
-                  lineHeight: 0.8,
-                }}
-              >
-                Faltan
-              </Typography>
-
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.gold,
-                  fontSize: 11,
-                  letterSpacing: "0.22em",
-                  mt: 1.5,
-                }}
-              >
-                PARA MI GRAN DÍA
-              </Typography>
-
-              <Countdown targetDate={fechaEvento} />
-            </Box>
-
-            <Box
-              className="invitation-reveal invitation-delay-3"
-              sx={{
                 mt: 5,
               }}
             >
               <OrnamentalLine />
-
-              <Typography
-                sx={{
-                  ...serifFont,
-                  color: T.text,
-                  textAlign: "center",
-                  fontSize: 15,
-                  lineHeight: 1.9,
-                  fontStyle: "italic",
-                  maxWidth: 460,
-                  mx: "auto",
-                }}
-              >
-                "{frasePersonal}"
-              </Typography>
             </Box>
 
             <Box
@@ -987,8 +965,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
         }}
       />
 
-      <MusicPlayer />
-
       {activeSection !== "invitation" && (
         <Zoom in>
           <IconButton
@@ -1013,40 +989,40 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
         </Zoom>
       )}
 
-     <Box
-  sx={{
-    width: "100%",
-    minHeight: "100vh",
-    position: "relative",
-    zIndex: 1,
-    display: "flex",
-    flexDirection: "column",
-  }}
->
-  {activeSection === "invitation" && renderInvitation()}
+      <Box
+        sx={{
+          width: "100%",
+          minHeight: "100vh",
+          position: "relative",
+          zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {activeSection === "invitation" && renderInvitation()}
 
-  {activeSection === "history" && (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <HistorySection novio="" novia={quinceanera} historia={historia} />
-    </Container>
-  )}
+        {activeSection === "history" && (
+          <Container maxWidth="md" sx={{ py: 4 }}>
+            <HistorySection novio="" novia={quinceanera} historia={historia} />
+          </Container>
+        )}
 
-  {activeSection === "details" && (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <GiftsSection />
-    </Container>
-  )}
+        {activeSection === "details" && (
+          <Container maxWidth="md" sx={{ py: 4 }}>
+            <GiftsSection />
+          </Container>
+        )}
 
-  {activeSection === "location" && (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <LocationSection
-        lugar={lugar}
-        direccion={direccion}
-        coordenadasGPS={coordenadasGPS}
-      />
-    </Container>
-  )}
-</Box>
+        {activeSection === "location" && (
+          <Container maxWidth="md" sx={{ py: 4 }}>
+            <LocationSection
+              lugar={lugar}
+              direccion={direccion}
+              coordenadasGPS={coordenadasGPS}
+            />
+          </Container>
+        )}
+      </Box>
 
       <Modal
         open={openModal}
@@ -1083,8 +1059,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
               p: { xs: 3, sm: 4 },
             }}
           >
-            
-
             <IconButton
               onClick={() => setOpenModal(false)}
               sx={{

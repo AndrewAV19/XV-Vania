@@ -1,60 +1,49 @@
-// components/MusicPlayer.tsx
 import React, { useState, useRef, useEffect } from "react";
-import {
-  IconButton,
-  Box,
-  Paper,
-  useTheme,
-  alpha,
-  Zoom,
-} from "@mui/material";
+import { IconButton, Box, Typography } from "@mui/material";
 import {
   PlayArrow as PlayIcon,
   Pause as PauseIcon,
+  VolumeUp as VolumeIcon,
 } from "@mui/icons-material";
 
-const MusicPlayer: React.FC = () => {
-  const theme = useTheme();
+interface MusicPlayerProps {
+  text?: string;
+}
+
+const MusicPlayer: React.FC<MusicPlayerProps> = ({ 
+  text = "ESCUCHA MI CANCIÓN FAVORITA" 
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isAudioReady, setIsAudioReady] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Usar el archivo de música local
   const songUrl = "/musicaboda.mp3";
 
   useEffect(() => {
-    // Crear el elemento de audio
     audioRef.current = new Audio(songUrl);
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.5; // Volumen fijo al 50%
+    audioRef.current.volume = 0.5;
 
-    // Manejar eventos del audio
-    const handleCanPlay = () => {
-      setIsAudioReady(true);
-    };
-
+    const handleCanPlay = () => setIsAudioReady(true);
     const handleError = (error: any) => {
       console.error("Error cargando el audio:", error);
       setIsAudioReady(false);
     };
 
-    audioRef.current.addEventListener('canplay', handleCanPlay);
-    audioRef.current.addEventListener('error', handleError);
+    audioRef.current.addEventListener("canplay", handleCanPlay);
+    audioRef.current.addEventListener("error", handleError);
 
-    // Limpiar al desmontar
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
-        audioRef.current.removeEventListener('canplay', handleCanPlay);
-        audioRef.current.removeEventListener('error', handleError);
+        audioRef.current.removeEventListener("canplay", handleCanPlay);
+        audioRef.current.removeEventListener("error", handleError);
         audioRef.current = null;
       }
     };
   }, [songUrl]);
 
-  // Manejar reproducción automática (intentarlo una vez al cargar)
   useEffect(() => {
-    // Intentar reproducir automáticamente (puede ser bloqueado por el navegador)
     const autoplay = async () => {
       if (audioRef.current && isAudioReady) {
         try {
@@ -65,7 +54,6 @@ const MusicPlayer: React.FC = () => {
         }
       }
     };
-
     autoplay();
   }, [isAudioReady]);
 
@@ -88,44 +76,89 @@ const MusicPlayer: React.FC = () => {
   return (
     <Box
       sx={{
-        position: "fixed",
-        bottom: 20,
-        right: 20,
-        zIndex: 1000,
+        position: "relative",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        mt: 2,
+        mb: 2,
       }}
     >
-      <Zoom in={true} timeout={800}>
-        <Paper
-          elevation={8}
+      <Typography
+        sx={{
+          fontFamily: "'Cormorant Garamond', serif",
+          color: "#b08d6a",
+          fontSize: { xs: 10, sm: 12 },
+          fontWeight: 600,
+          letterSpacing: "0.15em",
+          textTransform: "uppercase",
+          mb: 1,
+        }}
+      >
+        {text}
+      </Typography>
+
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 360,
+          backgroundColor: "rgba(235, 190, 200, 0.65)",
+          backdropFilter: "blur(8px)",
+          borderRadius: "4px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          px: { xs: 1.5, sm: 2 },
+          py: 1,
+          boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+        }}
+      >
+        <IconButton
+          onClick={togglePlay}
           sx={{
-            borderRadius: "50%",
-            background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.95)} 0%, ${alpha(theme.palette.secondary.main, 0.95)} 100%)`,
-            color: "white",
-            width: 56,
-            height: 56,
-            backdropFilter: "blur(10px)",
-            border: `1px solid ${alpha(theme.palette.common.white, 0.2)}`,
-            boxShadow: `0 8px 32px ${alpha(theme.palette.primary.main, 0.3)}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            color: "#ffffff",
+            p: 0.5,
+            "&:hover": { backgroundColor: "rgba(255,255,255,0.25)" },
           }}
         >
-          <IconButton 
-            onClick={togglePlay} 
-            sx={{ 
-              color: "white",
-              transition: 'transform 0.3s',
-              '&:hover': {
-                transform: 'scale(1.1)',
-                bgcolor: alpha(theme.palette.common.white, 0.1),
-              },
+          {isPlaying ? <PauseIcon fontSize="small" /> : <PlayIcon fontSize="small" />}
+        </IconButton>
+
+        <Box
+          sx={{
+            flex: 1,
+            height: 2,
+            backgroundColor: "rgba(255, 255, 255, 0.6)",
+            mx: 1.5,
+            borderRadius: 1,
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              height: "100%",
+              width: isPlaying ? "35%" : "0%",
+              backgroundColor: "#ffffff",
+              transition: "width 1s linear",
             }}
-          >
-            {isPlaying ? <PauseIcon /> : <PlayIcon />}
-          </IconButton>
-        </Paper>
-      </Zoom>
+          />
+        </Box>
+
+        <IconButton
+          sx={{
+            color: "#ffffff",
+            p: 0.5,
+            "&:hover": { backgroundColor: "rgba(255,255,255,0.25)" },
+          }}
+        >
+          <VolumeIcon fontSize="small" />
+        </IconButton>
+      </Box>
     </Box>
   );
 };
