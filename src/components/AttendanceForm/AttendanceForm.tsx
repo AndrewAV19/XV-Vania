@@ -162,7 +162,7 @@ interface AttendanceFormProps {
 
 const AttendanceForm: React.FC<AttendanceFormProps> = ({
   quinceanera,
-  numeroContacto = "3931023952",
+  numeroContacto = "3931062765",
   onClose,
 }) => {
   const [form, setForm] = useState({
@@ -206,7 +206,7 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbxPyvVCB710e4eYZfrc5vLty3baPFxVsCt-vgcTXZKOUvyIUDnBuG_-qlJ8A89fEZexBA/exec",
+        "https://script.google.com/macros/s/AKfycbyiD7YAFsiQbURuDgLolAtgCzrzj4IU9PfuY6zrm3edDX4GYLo_aZJKq1GQ3y-0N-4k/exec",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
