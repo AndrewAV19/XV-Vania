@@ -20,6 +20,7 @@ import AttendanceForm from "../components/AttendanceForm/AttendanceForm";
 import GiftsSection from "../components/Giftssection/Giftseciont";
 import LocationSection from "../components/Locationsection/Locationsection";
 import InvitationContent from "../components/InvitationContent/InvitationContent";
+import { Sparkles } from "../components/Designs/Sparkles";
 
 interface TimelineEvent {
   time: string;
@@ -227,6 +228,7 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
   const renderInvitation = () => (
     <Grow in timeout={900}>
       <Box>
+        <Sparkles />
         <InvitationContent
           quinceanera={quinceanera}
           apellidos={apellidos}

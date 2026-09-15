@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Stack, Typography, Divider } from "@mui/material";
 import { FloralDecoration } from "./Flowers";
+import { TulipDecoration } from "./TulipDecoration";
 
 interface ParentsAndGodparentsProps {
   parents?: string[];
@@ -44,8 +45,50 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
       <Box
         sx={{
           position: "absolute",
+          left: { xs: "0%", sm: "8%", md: "15%" },
+          top: "29%",
+          transform: "translateY(-50%)",
+          zIndex: 0,
+        }}
+      >
+        <TulipDecoration
+          size={80}
+          rotate={360}
+          scale={1.2}
+          opacity={0.9}
+          sx={{
+            width: { xs: 55, sm: 80, md: 110 },
+            height: "auto",
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          position: "absolute",
+          right: { xs: "0%", sm: "8%", md: "15%" },
+          top: "75%",
+          transform: "translateY(-50%) scaleX(-1)",
+          zIndex: 0,
+        }}
+      >
+        <TulipDecoration
+          size={80}
+          rotate={360}
+          scale={1.2}
+          opacity={0.9}
+          sx={{
+            width: { xs: 55, sm: 80, md: 110 },
+            height: "auto",
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          position: "absolute",
           left: { xs: "-3%", sm: "8%", md: "15%" },
-          top: "52%",
+          top: "75%",
           transform: "translateY(-50%)",
           zIndex: 0,
         }}
@@ -53,7 +96,7 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
         <FloralDecoration
           size={80}
           rotate={180}
-          scale={1}
+          scale={1.9}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },
@@ -66,7 +109,7 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
         sx={{
           position: "absolute",
           right: { xs: "-3%", sm: "8%", md: "15%" },
-          top: "52%",
+          top: "20%",
           transform: "translateY(-50%) scaleX(-1)",
           zIndex: 0,
         }}
@@ -74,7 +117,7 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
         <FloralDecoration
           size={80}
           rotate={180}
-          scale={1}
+          scale={1.8}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },

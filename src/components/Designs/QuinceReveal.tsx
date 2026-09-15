@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { FloralDecoration } from "../Designs/Flowers";
+import { TulipDecoration } from "./TulipDecoration";
 
 const T = {
   gold: "#b99a61",
@@ -31,7 +32,7 @@ export const QuinceReveal: React.FC = () => {
         sx={{
           position: "absolute",
           left: { xs: "-3%", sm: "8%", md: "15%" },
-          top: "100%",
+          top: "15%",
           transform: "translateY(-50%)",
           zIndex: 0,
         }}
@@ -39,7 +40,7 @@ export const QuinceReveal: React.FC = () => {
         <FloralDecoration
           size={80}
           rotate={180}
-          scale={1.5}
+          scale={2}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },
@@ -51,13 +52,34 @@ export const QuinceReveal: React.FC = () => {
       <Box
         sx={{
           position: "absolute",
-          right: { xs: "-3%", sm: "8%", md: "15%" },
-          top: "100%",
-          transform: "translateY(-50%) scaleX(-1)",
+          left: { xs: "-3%", sm: "8%", md: "15%" },
+          top: "150%",
+          transform: "translateY(-50%)",
           zIndex: 0,
         }}
       >
         <FloralDecoration
+          size={80}
+          rotate={180}
+          scale={2}
+          opacity={0.9}
+          sx={{
+            width: { xs: 55, sm: 80, md: 110 },
+            height: "auto",
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          position: "absolute",
+          right: { xs: "2%", sm: "8%", md: "15%" },
+          top: "85%",
+          transform: "translateY(-50%) ",
+          zIndex: 0,
+        }}
+      >
+        <TulipDecoration
           size={80}
           rotate={180}
           scale={1.5}

@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import { FloralDecoration } from "./Flowers";
 
 export const PhotoStrip = ({ fotos }: { fotos?: string[] }) => {
   const imagenPrincipal = fotos?.length ? fotos[0] : "/imgGaleria1.jpeg";
@@ -49,6 +50,48 @@ export const PhotoStrip = ({ fotos }: { fotos?: string[] }) => {
             pointerEvents: "none",
           }}
         />
+
+        <Box
+          sx={{
+            position: "absolute",
+            left: { xs: "-3%", sm: "8%", md: "15%" },
+            top: "95%",
+            transform: "translateY(-50%)",
+            zIndex: 0,
+          }}
+        >
+          <FloralDecoration
+            size={80}
+            rotate={180}
+            scale={1.4}
+            opacity={0.9}
+            sx={{
+              width: { xs: 55, sm: 80, md: 110 },
+              height: "auto",
+            }}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            position: "absolute",
+            right: { xs: "-3%", sm: "8%", md: "15%" },
+            top: "95%",
+            transform: "translateY(-50%) scaleX(-1)",
+            zIndex: 0,
+          }}
+        >
+          <FloralDecoration
+            size={80}
+            rotate={180}
+            scale={1.4}
+            opacity={0.9}
+            sx={{
+              width: { xs: 55, sm: 80, md: 110 },
+              height: "auto",
+            }}
+          />
+        </Box>
 
         <Box
           sx={{

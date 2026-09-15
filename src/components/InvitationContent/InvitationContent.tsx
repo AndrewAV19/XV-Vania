@@ -9,6 +9,7 @@ import EventDetails from "../Designs/EventDetails";
 import { EnvelopeIllustration } from "../Designs/EnvelopeIllustration";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import QuinceReveal from "../Designs/QuinceReveal";
+import { TulipDecoration } from "../Designs/TulipDecoration";
 
 interface InvitationContentProps {
   quinceanera: string;
@@ -72,6 +73,21 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
           overflow: "hidden",
           minHeight: "100vh",
           background: `
+            radial-gradient(
+              circle at 50% 12%,
+              rgba(255,231,183,0.13) 0%,
+              transparent 25%
+            ),
+            radial-gradient(
+              circle at 15% 45%,
+              rgba(255,225,183,0.08) 0%,
+              transparent 22%
+            ),
+            radial-gradient(
+              circle at 85% 72%,
+              rgba(255,225,183,0.08) 0%,
+              transparent 22%
+            ),
             linear-gradient(
               180deg,
               rgba(255,250,249,0.98) 0%,
@@ -120,21 +136,44 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
 
           <Box
             sx={{
-              mt: 4,
+              mt: 0,
               width: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                left: { xs: "45%", sm: "8%", md: "15%" },
+                top: "14.1%",
+                transform: "translateY(-50%) scaleX(-1)",
+                zIndex: 0,
+              }}
+            >
+              <TulipDecoration
+                size={80}
+                rotate={92}
+                scale={1.5}
+                opacity={0.9}
+                sx={{
+                  width: { xs: 55, sm: 80, md: 110 },
+                  height: "auto",
+                }}
+              />
+            </Box>
+
             <Typography
               sx={{
                 ...scriptFont,
                 color: T.gold,
                 fontSize: { xs: 76, sm: 96 },
                 lineHeight: 0.9,
-                textShadow: "0 2px 10px rgba(152,79,98,0.12)",
+                textShadow:
+                  "0 2px 10px rgba(152,79,98,0.12), 0 0 18px rgba(211,187,137,0.18)",
                 textAlign: "center",
+                mt: 10,
               }}
             >
               {quinceanera}
@@ -146,7 +185,8 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
                 color: T.gold,
                 fontSize: { xs: 58, sm: 72 },
                 lineHeight: 0.9,
-                textShadow: "0 2px 10px rgba(152,79,98,0.12)",
+                textShadow:
+                  "0 2px 10px rgba(152,79,98,0.12), 0 0 18px rgba(211,187,137,0.18)",
                 textAlign: "center",
               }}
             >
@@ -201,7 +241,8 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
               background: "#fff9f7",
               borderRadius: "18px",
               p: 0.6,
-              boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
+              boxShadow:
+                "0 8px 24px rgba(102,52,64,0.08), 0 0 24px rgba(196,154,108,0.08)",
             }}
           >
             <Box
@@ -237,7 +278,8 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
                 sx={{
                   position: "relative",
                   background: "#fff9f7",
-                  boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
+                  boxShadow:
+                    "0 8px 24px rgba(102,52,64,0.08), 0 0 24px rgba(196,154,108,0.07)",
                 }}
               >
                 <Box
@@ -258,7 +300,8 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
                   position: "relative",
                   background: "#fff9f7",
                   p: 0.6,
-                  boxShadow: "0 8px 24px rgba(102,52,64,0.08)",
+                  boxShadow:
+                    "0 8px 24px rgba(102,52,64,0.08), 0 0 24px rgba(196,154,108,0.07)",
                 }}
               >
                 <Box
@@ -309,7 +352,8 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
                       fontSize: 12,
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
-                      boxShadow: "0 6px 16px rgba(133,65,82,0.25)",
+                      boxShadow:
+                        "0 6px 16px rgba(133,65,82,0.25), 0 0 12px rgba(211,187,137,0.12)",
                       "&:hover": {
                         background:
                           "linear-gradient(135deg, #b66d7f 0%, #8d485b 100%)",
@@ -322,6 +366,7 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
                   </Button>
                 </Box>
               </Box>
+
               <Typography
                 sx={{
                   ...serifFont,
@@ -335,6 +380,27 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
               >
                 {notasAdicionales}
               </Typography>
+
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: { xs: "40%", sm: "8%", md: "15%" },
+                  top: "101.2%",
+                  transform: "translateY(-50%) scaleX(-1)",
+                  zIndex: 0,
+                }}
+              >
+                <TulipDecoration
+                  size={80}
+                  rotate={270}
+                  scale={1}
+                  opacity={0.9}
+                  sx={{
+                    width: { xs: 55, sm: 80, md: 110 },
+                    height: "auto",
+                  }}
+                />
+              </Box>
             </Stack>
           </Box>
         </Box>

@@ -1,5 +1,7 @@
 import { Box, Stack, Typography, Button } from "@mui/material";
 import { FloralDecoration } from "./Flowers";
+import { RoseDecoration } from "./RoseDecoration";
+import { TulipDecoration } from "./TulipDecoration";
 
 const T = {
   gold: "#b99a61",
@@ -130,18 +132,18 @@ export const EventDetails = () => {
           </Typography>
         </Box>
 
-        <Box
+         <Box
           sx={{
             position: "absolute",
-            left: { xs: "-3%", sm: "8%", md: "15%" },
-            top: "32%",
-            transform: "translateY(-50%)",
+            left: { xs: "3%", sm: "8%", md: "15%" },
+            top: "35%",
+            transform: "translateY(-50%) scaleX(-1)",
             zIndex: 0,
           }}
         >
-          <FloralDecoration
+          <RoseDecoration
             size={80}
-            rotate={180}
+            rotate={360}
             scale={2}
             opacity={0.9}
             sx={{
@@ -154,7 +156,7 @@ export const EventDetails = () => {
         <Box
           sx={{
             position: "absolute",
-            right: { xs: "-3%", sm: "8%", md: "15%" },
+            right: { xs: "-2%", sm: "8%", md: "15%" },
             top: "32%",
             transform: "translateY(-50%) scaleX(-1)",
             zIndex: 0,
@@ -163,7 +165,7 @@ export const EventDetails = () => {
           <FloralDecoration
             size={80}
             rotate={180}
-            scale={2}
+            scale={2.4}
             opacity={0.9}
             sx={{
               width: { xs: 55, sm: 80, md: 110 },
@@ -194,7 +196,7 @@ export const EventDetails = () => {
          <Box
           sx={{
             position: "absolute",
-            left: { xs: "-3%", sm: "8%", md: "15%" },
+            left: { xs: "3%", sm: "8%", md: "15%" },
             top: "72%",
             transform: "translateY(-50%)",
             zIndex: 0,
@@ -203,7 +205,7 @@ export const EventDetails = () => {
           <FloralDecoration
             size={80}
             rotate={180}
-            scale={2}
+            scale={2.2}
             opacity={0.9}
             sx={{
               width: { xs: 55, sm: 80, md: 110 },
@@ -215,16 +217,16 @@ export const EventDetails = () => {
         <Box
           sx={{
             position: "absolute",
-            right: { xs: "-3%", sm: "8%", md: "15%" },
+            right: { xs: "3%", sm: "8%", md: "15%" },
             top: "72%",
-            transform: "translateY(-50%) scaleX(-1)",
+            transform: "translateY(-50%) ",
             zIndex: 0,
           }}
         >
-          <FloralDecoration
+          <TulipDecoration
             size={80}
             rotate={180}
-            scale={2}
+            scale={1.6}
             opacity={0.9}
             sx={{
               width: { xs: 55, sm: 80, md: 110 },

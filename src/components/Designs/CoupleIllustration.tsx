@@ -1,4 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
+import { TulipDecoration } from "./TulipDecoration";
 
 const T = {
   gold: "#b99a61",
@@ -14,8 +15,19 @@ const scriptFont = {
 };
 
 const DressIcon = () => (
-  <Box sx={{ width: { xs: 70, sm: 80 }, height: { xs: 80, sm: 90 }, mx: "auto" }}>
-    <svg viewBox="0 0 80 90" width="100%" height="100%" fill="none" stroke={T.textDark} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+  <Box
+    sx={{ width: { xs: 70, sm: 80 }, height: { xs: 80, sm: 90 }, mx: "auto" }}
+  >
+    <svg
+      viewBox="0 0 80 90"
+      width="100%"
+      height="100%"
+      fill="none"
+      stroke={T.textDark}
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M30 10 L40 20 L50 10" />
       <path d="M30 10 C28 15 28 20 32 25" />
       <path d="M50 10 C52 15 52 20 48 25" />
@@ -29,8 +41,19 @@ const DressIcon = () => (
 );
 
 const SuitIcon = () => (
-  <Box sx={{ width: { xs: 70, sm: 80 }, height: { xs: 80, sm: 90 }, mx: "auto" }}>
-    <svg viewBox="0 0 80 90" width="100%" height="100%" fill="none" stroke={T.textDark} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+  <Box
+    sx={{ width: { xs: 70, sm: 80 }, height: { xs: 80, sm: 90 }, mx: "auto" }}
+  >
+    <svg
+      viewBox="0 0 80 90"
+      width="100%"
+      height="100%"
+      fill="none"
+      stroke={T.textDark}
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M25 15 L40 25 L55 15" />
       <path d="M25 15 L20 30 L20 70 L60 70 L60 30 L55 15" />
       <path d="M40 25 L35 35 L40 45 L45 35 Z" />
@@ -57,7 +80,12 @@ export const DressCode = () => {
         Código de vestimenta
       </Typography>
 
-      <Stack direction="row" justifyContent="center" spacing={{ xs: 4, sm: 8 }} sx={{ mb: 3 }}>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        spacing={{ xs: 4, sm: 8 }}
+        sx={{ mb: 3 }}
+      >
         <Box>
           <Typography
             sx={{
@@ -98,6 +126,27 @@ export const DressCode = () => {
       >
         Se reserva los tonos rosado y nude para la QUINCEAÑERA
       </Typography>
+
+      <Box
+        sx={{
+          position: "absolute",
+          left: { xs: "40%", sm: "8%", md: "15%" },
+          top: "94%",
+          transform: "translateY(-50%) scaleX(-1)",
+          zIndex: 0,
+        }}
+      >
+        <TulipDecoration
+          size={80}
+          rotate={270}
+          scale={1}
+          opacity={0.9}
+          sx={{
+            width: { xs: 55, sm: 80, md: 110 },
+            height: "auto",
+          }}
+        />
+      </Box>
     </Box>
   );
 };
