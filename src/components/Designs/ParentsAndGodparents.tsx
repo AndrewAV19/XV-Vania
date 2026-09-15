@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Stack, Typography, Divider } from "@mui/material";
-import { TulipDecoration } from "./TulipDecoration";
-import { RoseDecoration } from "./RoseDecoration";
+import { TulipDecoration } from "../Flowers/TulipDecoration";
+import { RoseDecoration } from "../Flowers/RoseDecoration";
 
 interface ParentsAndGodparentsProps {
   parents?: string[];

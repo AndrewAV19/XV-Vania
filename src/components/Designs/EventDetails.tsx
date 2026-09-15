@@ -1,7 +1,7 @@
 import { Box, Stack, Typography, Button } from "@mui/material";
-import { FloralDecoration } from "./Flowers";
-import { RoseDecoration } from "./RoseDecoration";
-import { TulipDecoration } from "./TulipDecoration";
+import { FloralDecoration } from "../Flowers/Flowers";
+import { RoseDecoration } from "../Flowers/RoseDecoration";
+import { TulipDecoration } from "../Flowers/TulipDecoration";
 
 const T = {
   gold: "#b99a61",

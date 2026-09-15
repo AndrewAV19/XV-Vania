@@ -9,7 +9,7 @@ import EventDetails from "../Designs/EventDetails";
 import { EnvelopeIllustration } from "../Designs/EnvelopeIllustration";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import QuinceReveal from "../Designs/QuinceReveal";
-import { TulipDecoration } from "../Designs/TulipDecoration";
+import { TulipDecoration } from "../Flowers/TulipDecoration";
 
 interface InvitationContentProps {
   quinceanera: string;

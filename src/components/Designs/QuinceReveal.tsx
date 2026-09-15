@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { FloralDecoration } from "../Designs/Flowers";
-import { TulipDecoration } from "./TulipDecoration";
-import { RoseDecoration } from "./RoseDecoration";
+import { FloralDecoration } from "../Flowers/Flowers";
+import { TulipDecoration } from "../Flowers/TulipDecoration";
+import { RoseDecoration } from "../Flowers/RoseDecoration";
 
 const T = {
   gold: "#b99a61",

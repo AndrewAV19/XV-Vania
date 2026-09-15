@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { RoseDecoration } from "./RoseDecoration";
+import { RoseDecoration } from "../Flowers/RoseDecoration";
 
 export const PhotoStrip = ({ fotos }: { fotos?: string[] }) => {
   const imagenPrincipal = fotos?.length ? fotos[0] : "/imgGaleria1.jpeg";

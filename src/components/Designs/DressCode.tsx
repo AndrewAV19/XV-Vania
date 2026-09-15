@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { TulipDecoration } from "./TulipDecoration";
+import { TulipDecoration } from "../Flowers/TulipDecoration";
 
 const T = {
   gold: "#b99a61",
