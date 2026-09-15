@@ -156,16 +156,15 @@ export const EventDetails = () => {
         <Box
           sx={{
             position: "absolute",
-            right: { xs: "-2%", sm: "8%", md: "15%" },
-            top: "32%",
-            transform: "translateY(-50%) scaleX(-1)",
+            right: { xs: "2%", sm: "8%", md: "15%" },
+            top: "35%",
+            transform: "translateY(-50%) ",
             zIndex: 0,
           }}
         >
-          <FloralDecoration
+          <RoseDecoration
             size={80}
-            rotate={180}
-            scale={2.4}
+            scale={2}
             opacity={0.9}
             sx={{
               width: { xs: 55, sm: 80, md: 110 },
@@ -205,7 +204,7 @@ export const EventDetails = () => {
           <FloralDecoration
             size={80}
             rotate={180}
-            scale={2.2}
+            scale={2.5}
             opacity={0.9}
             sx={{
               width: { xs: 55, sm: 80, md: 110 },
@@ -226,7 +225,7 @@ export const EventDetails = () => {
           <TulipDecoration
             size={80}
             rotate={180}
-            scale={1.6}
+            scale={2.4}
             opacity={0.9}
             sx={{
               width: { xs: 55, sm: 80, md: 110 },

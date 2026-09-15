@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Stack, Typography, Divider } from "@mui/material";
-import { FloralDecoration } from "./Flowers";
 import { TulipDecoration } from "./TulipDecoration";
+import { RoseDecoration } from "./RoseDecoration";
 
 interface ParentsAndGodparentsProps {
   parents?: string[];
@@ -53,8 +53,8 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
       >
         <TulipDecoration
           size={80}
-          rotate={360}
-          scale={1.2}
+          rotate={180}
+          scale={2.4}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },
@@ -74,8 +74,8 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
       >
         <TulipDecoration
           size={80}
-          rotate={360}
-          scale={1.2}
+          rotate={180}
+          scale={2.4}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },
@@ -87,16 +87,15 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
       <Box
         sx={{
           position: "absolute",
-          left: { xs: "-3%", sm: "8%", md: "15%" },
+          left: { xs: "3%", sm: "8%", md: "15%" },
           top: "75%",
           transform: "translateY(-50%)",
           zIndex: 0,
         }}
       >
-        <FloralDecoration
+        <RoseDecoration
           size={80}
-          rotate={180}
-          scale={1.9}
+          scale={2.2}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },
@@ -108,16 +107,15 @@ export const ParentsAndGodparents: React.FC<ParentsAndGodparentsProps> = ({
       <Box
         sx={{
           position: "absolute",
-          right: { xs: "-3%", sm: "8%", md: "15%" },
-          top: "20%",
+          right: { xs: "-2%", sm: "8%", md: "15%" },
+          top: "28%",
           transform: "translateY(-50%) scaleX(-1)",
           zIndex: 0,
         }}
       >
-        <FloralDecoration
+        <RoseDecoration
           size={80}
-          rotate={180}
-          scale={1.8}
+          scale={2.2}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },

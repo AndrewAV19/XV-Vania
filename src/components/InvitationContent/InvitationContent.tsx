@@ -3,7 +3,7 @@ import { Box, Typography, Button, Stack } from "@mui/material";
 import { Countdown } from "../Designs/Countdown";
 import { PhotoStrip } from "../Designs/PhotoStrip";
 import ParentsAndGodparents from "../Designs/ParentsAndGodparents";
-import DressCode from "../Designs/CoupleIllustration";
+import DressCode from "../Designs/DressCode";
 import { PhotoStripOnlyPhoto } from "../Designs/PhotoStripOnlyPhoto";
 import EventDetails from "../Designs/EventDetails";
 import { EnvelopeIllustration } from "../Designs/EnvelopeIllustration";
@@ -147,7 +147,7 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
               sx={{
                 position: "absolute",
                 left: { xs: "45%", sm: "8%", md: "15%" },
-                top: "14.1%",
+                top: "14.3%",
                 transform: "translateY(-50%) scaleX(-1)",
                 zIndex: 0,
               }}
@@ -155,7 +155,7 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
               <TulipDecoration
                 size={80}
                 rotate={92}
-                scale={1.5}
+                scale={2.2}
                 opacity={0.9}
                 sx={{
                   width: { xs: 55, sm: 80, md: 110 },
@@ -384,7 +384,7 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
               <Box
                 sx={{
                   position: "absolute",
-                  left: { xs: "40%", sm: "8%", md: "15%" },
+                  left: { xs: "70%", sm: "8%", md: "15%" },
                   top: "101.2%",
                   transform: "translateY(-50%) scaleX(-1)",
                   zIndex: 0,
@@ -393,7 +393,7 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
                 <TulipDecoration
                   size={80}
                   rotate={270}
-                  scale={1}
+                  scale={1.6}
                   opacity={0.9}
                   sx={{
                     width: { xs: 55, sm: 80, md: 110 },

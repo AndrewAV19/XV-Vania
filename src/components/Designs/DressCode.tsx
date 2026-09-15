@@ -138,8 +138,8 @@ export const DressCode = () => {
       >
         <TulipDecoration
           size={80}
-          rotate={270}
-          scale={1}
+          rotate={290}
+          scale={1.6}
           opacity={0.9}
           sx={{
             width: { xs: 55, sm: 80, md: 110 },
