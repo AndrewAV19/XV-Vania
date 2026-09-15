@@ -15,33 +15,36 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isAudioReady, setIsAudioReady] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const songUrl = "/musicaboda.mp3";
 
   useEffect(() => {
-    audioRef.current = new Audio(songUrl);
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.5;
+    const audio = new Audio(songUrl);
 
-    const handleCanPlay = () => setIsAudioReady(true);
-    const handleError = (error: any) => {
+    audio.loop = true;
+    audio.volume = 0.5;
+    audioRef.current = audio;
+
+    const handleCanPlay = () => {
+      setIsAudioReady(true);
+    };
+
+    const handleError = (error: Event) => {
       console.error("Error cargando el audio:", error);
       setIsAudioReady(false);
     };
 
-    audioRef.current.addEventListener("canplay", handleCanPlay);
-    audioRef.current.addEventListener("error", handleError);
+    audio.addEventListener("canplay", handleCanPlay);
+    audio.addEventListener("error", handleError);
 
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.removeEventListener("canplay", handleCanPlay);
-        audioRef.current.removeEventListener("error", handleError);
-        audioRef.current = null;
-      }
+      audio.pause();
+      audio.removeEventListener("canplay", handleCanPlay);
+      audio.removeEventListener("error", handleError);
+      audioRef.current = null;
     };
-  }, [songUrl]);
+  }, []);
 
   useEffect(() => {
     const autoplay = async () => {
@@ -54,6 +57,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
         }
       }
     };
+
     autoplay();
   }, [isAudioReady]);
 
@@ -122,10 +126,16 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           sx={{
             color: "#ffffff",
             p: 0.5,
-            "&:hover": { backgroundColor: "rgba(255,255,255,0.25)" },
+            "&:hover": {
+              backgroundColor: "rgba(255,255,255,0.25)",
+            },
           }}
         >
-          {isPlaying ? <PauseIcon fontSize="small" /> : <PlayIcon fontSize="small" />}
+          {isPlaying ? (
+            <PauseIcon fontSize="small" />
+          ) : (
+            <PlayIcon fontSize="small" />
+          )}
         </IconButton>
 
         <Box
@@ -156,7 +166,9 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           sx={{
             color: "#ffffff",
             p: 0.5,
-            "&:hover": { backgroundColor: "rgba(255,255,255,0.25)" },
+            "&:hover": {
+              backgroundColor: "rgba(255,255,255,0.25)",
+            },
           }}
         >
           <VolumeIcon fontSize="small" />

@@ -392,7 +392,7 @@ export const InvitationContent: React.FC<InvitationContentProps> = ({
               >
                 <TulipDecoration
                   size={80}
-                  rotate={270}
+                  rotate={120}
                   scale={1.6}
                   opacity={0.9}
                   sx={{

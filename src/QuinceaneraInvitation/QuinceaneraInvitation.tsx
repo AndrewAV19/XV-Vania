@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Container,
   Typography,
   IconButton,
   Fade,
@@ -16,9 +15,7 @@ import {
   Close as CloseIcon,
   ConfirmationNumber as ConfirmationNumberIcon,
 } from "@mui/icons-material";
-import AttendanceForm from "../components/AttendanceForm/AttendanceForm";
-import GiftsSection from "../components/Giftssection/Giftseciont";
-import LocationSection from "../components/Locationsection/Locationsection";
+import AttendanceForm from "../components/Form/AttendanceForm";
 import InvitationContent from "../components/InvitationContent/InvitationContent";
 import { Sparkles } from "../components/Designs/Sparkles";
 
@@ -174,13 +171,7 @@ body {
 export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
   quinceanera = "Vania",
   apellidos = "Jiménez Alonso",
-  lugar = "Salón de Eventos",
-  direccion = "Av. Principal #123",
   frasePersonal = "Un sueño que comienza, una historia que continúa.",
-  coordenadasGPS = {
-    lat: 20.301798,
-    lng: -102.539874,
-  },
   notasAdicionales = "Será un honor contar contigo en este día tan especial.",
   padres = ["Tania Alonso Ramírez", "Israel Jiménez Paulino"],
   padrinos = ["Laura Alonso Diaz", "Ventzislav Tzvetkov"],
@@ -309,22 +300,6 @@ export const QuinceaneraInvitation: React.FC<QuinceaneraInvitationProps> = ({
         }}
       >
         {activeSection === "invitation" && renderInvitation()}
-
-        {activeSection === "details" && (
-          <Container maxWidth="md" sx={{ py: 4 }}>
-            <GiftsSection />
-          </Container>
-        )}
-
-        {activeSection === "location" && (
-          <Container maxWidth="md" sx={{ py: 4 }}>
-            <LocationSection
-              lugar={lugar}
-              direccion={direccion}
-              coordenadasGPS={coordenadasGPS}
-            />
-          </Container>
-        )}
       </Box>
 
       <Modal
